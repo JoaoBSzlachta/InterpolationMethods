@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos de Interpolação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100%;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f0f0f0; /* Background color for the page */
+        }
+        .input-container {
+            margin-bottom: 10px;
+        }
+        .input-container input {
+            margin-right: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+        h1, h2, h3 {
+            text-align: center;
+            padding: 10px;
+            background-color: #e0e0e0; /* Background color for headers */
+            border: 1px solid black; /* Black border for headers */
+            width: 100%;
+        }
+        div, form, #output {
+            text-align: center;
+            padding: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interpolação</h1>
+    <h2>Insira: <br> A quantidade pontos <br> O valor a ser interpolado <br> O método de interpolação</h2>
+    <p>Obs.: Valores decimais devem ser escritos utilizando "." ex: 1.221 </p>
+    <div>
+        <input type="number" id="qtdPontos" min="1" placeholder="Quantidade de Pontos">
+        <input type="number" id="nValue" placeholder="Valor a ser interpolado" step="0.00001">
+        <select name="method" id="method">
+            <option value="newton">Newton</option>
+            <option value="lagrange">Lagrange</option>
+        </select>
+        <button onclick="startInput()">INICIAR</button>
+    </div>
+    <form id="pointsForm" class="hidden" onsubmit="collectCoordinate(event)">
+        <div id="currentInputContainer" class="input-container">
+            <label id="currentLabel"></label>
+            <input type="number" step="0.00001" id="currentInput" required>
+            <button type="submit">Próximo</button>
+        </div>
+    </form>
+    <div id="output"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
