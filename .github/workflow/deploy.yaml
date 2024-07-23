@@ -1,0 +1,30 @@
+name: Deploy to GitHub Pages
+
+on: 
+  push:
+    ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        users: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup node@v2
+      
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Static Site
+        run: npm run build
+
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          ACCESS_TOKEN: ${{secrets.ACCESS_TOKEN}}
+          BRANCH: gh-pages
+          FOLDER: build
+          
